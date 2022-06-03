@@ -99,7 +99,7 @@ class Pasport(models.Model):
                                                  on_delete=models.PROTECT)
     jins = models.ForeignKey(Jins, verbose_name="Jinsi", on_delete=models.PROTECT, related_name='jins')
     pass_seriya = models.CharField(max_length=2, verbose_name="Passport seriyasi")
-    pass_raqam = models.CharField(verbose_name="Passport seriyasi", max_length=7, validators=[pass_regax])
+    pass_raqam = models.CharField(verbose_name="Passport raqami", max_length=7, validators=[pass_regax])
     pass_berilgan_sana = models.DateField()
     doimiy_viloyat = models.ForeignKey(Viloyat, verbose_name="Doimiy yashash viloyati", on_delete=models.PROTECT)
     doimiy_tuman = ChainedForeignKey(Tuman, verbose_name="Doimiy yashash tumani", on_delete=models.PROTECT,
@@ -194,6 +194,32 @@ class YonalishOTM(models.Model):
     talim_tili = models.ForeignKey(TalimTili, on_delete=models.PROTECT, verbose_name='Ta`lim tili')
     talim_shakli = models.ForeignKey(TalimShakli, on_delete=models.PROTECT, verbose_name='Ta`lim Shakli')
     talim_turi = models.ForeignKey(TalimTuri, on_delete=models.PROTECT, verbose_name='Ta`lim turi')
+    fan_name_1 = models.ForeignKey('Fanlar', on_delete=models.PROTECT, verbose_name='Fan-1', null=True, blank=True)
+    fan_ball_1 = models.ForeignKey('Ballar', on_delete=models.PROTECT, verbose_name='Ball-1', null=True, blank=True)
+    savol_soni_1 = models.SmallIntegerField(verbose_name='Savol soni-1', null=True, blank=True)
+    fan_name_2 = models.ForeignKey('Fanlar', on_delete=models.PROTECT, verbose_name='Fan-2', null=True, blank=True,
+                                   related_name='+')
+    fan_ball_2 = models.ForeignKey('Ballar', on_delete=models.PROTECT, verbose_name='Ball-2', null=True, blank=True,
+                                   related_name='+')
+    savol_soni_2 = models.SmallIntegerField(verbose_name='Savol soni-2', null=True, blank=True)
+
+    fan_name_3 = models.ForeignKey('Fanlar', on_delete=models.PROTECT, verbose_name='Fan-3', null=True, blank=True,
+                                   related_name='+')
+    fan_ball_3 = models.ForeignKey('Ballar', on_delete=models.PROTECT, verbose_name='Ball-3', null=True, blank=True,
+                                   related_name='+')
+    savol_soni_3 = models.SmallIntegerField(verbose_name='Savol soni-3', null=True, blank=True)
+
+    fan_name_4 = models.ForeignKey('Fanlar', on_delete=models.PROTECT, verbose_name='Fan-4', null=True, blank=True,
+                                   related_name='+')
+    fan_ball_4 = models.ForeignKey('Ballar', on_delete=models.PROTECT, verbose_name='Ball-4', null=True, blank=True,
+                                   related_name='+')
+    savol_soni_4 = models.SmallIntegerField(verbose_name='Savol soni-4', null=True, blank=True)
+
+    fan_name_5 = models.ForeignKey('Fanlar', on_delete=models.PROTECT, verbose_name='Fan-5', null=True, blank=True,
+                                   related_name='+')
+    fan_ball_5 = models.ForeignKey('Ballar', on_delete=models.PROTECT, verbose_name='Ball-5', null=True, blank=True,
+                                   related_name='+')
+    savol_soni_5 = models.SmallIntegerField(verbose_name='Savol soni-5', null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -213,3 +239,25 @@ class DavlatMukofoti(models.Model):
     class Meta:
         verbose_name = 'Davlat mukofoti '
         verbose_name_plural = 'Davlat mukofotlari'
+
+
+class Fanlar(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Fan nomi')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Fan '
+        verbose_name_plural = 'Fanlar '
+
+
+class Ballar(models.Model):
+    ballar = models.DecimalField(verbose_name='Ballar', max_digits=2, decimal_places=1)
+
+    def __str__(self):
+        return str(self.ballar)
+
+    class Meta:
+        verbose_name = 'Ball '
+        verbose_name_plural = 'Ballar '

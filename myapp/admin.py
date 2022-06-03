@@ -42,5 +42,7 @@ admin.site.register(TalimTili)
 admin.site.register(TalimTuri)
 admin.site.register(YonalishOTM, YonalishOTMAdmin)
 admin.site.register(DavlatMukofoti)
+admin.site.register(Ballar)
+admin.site.register(Fanlar)
 
 admin.site.index_title = 'Qabul 2022'
