@@ -7,7 +7,7 @@ from django.utils.html import format_html
 # Create your models here.
 from django.utils.safestring import mark_safe
 from smart_selects.db_fields import ChainedForeignKey
-
+import random
 
 def validate_image(image):
     filesize = image.file.size
@@ -110,9 +110,9 @@ class Pasport(models.Model):
                                      sort=True)
     doimiy_manzil = models.CharField(max_length=250, verbose_name="Doimiy yashash manzili", blank=True, null=True,
                                      help_text='Obod ko`cha 5-uy')
-    photo = models.ImageField(upload_to='photos/%Y', verbose_name="Rasm", validators=[validate_image],
+    photo = models.ImageField(upload_to='static/talaba/', verbose_name="Rasm", validators=[validate_image],
                               help_text='Maksimum fayl hajmi 2Mb')
-    telefon_raqam = models.CharField(validators=[phone_regex], max_length=9, help_text='Telegram raqam')
+    telefon_raqam = models.CharField(validators=[phone_regex], max_length=9, help_text='Telegram raqam (93)123-45-67')
     telefon_raqam_2 = models.CharField(validators=[phone_regex], max_length=9, null=True, blank=True,
                                        verbose_name='Qo`shimcha raqam',
                                        help_text='Qoshimcha raqam, Majburiy emas', )
@@ -128,18 +128,20 @@ class Pasport(models.Model):
                                         sort=True)
 
     diplom_raqam = models.CharField(max_length=30, verbose_name='Diplom raqami')
-    diplom_file = models.FileField(upload_to='photos/diplom/%Y', verbose_name='Diplom/Shahodatnoma fayl', blank=True,
-                                   null=True, validators=[validate_file], help_text='PDF file maks. 5MB')
+    diplom_file = models.FileField(upload_to='static/diplom/', verbose_name='Diplom/Shahodatnoma fayl', blank=True,
+                                   null=True, validators=[validate_file], help_text='PDF-Rasm file maks. 5MB')
 
-    harbiy_tavsiyanoma = models.FileField(upload_to='photos/harbiy/%Y', verbose_name='Harbiy tavsiyanoma', blank=True,
-                                          null=True, validators=[validate_file], help_text='PDF file maks. 5MB')
-    ielts_sertifikat = models.ImageField(upload_to='photos/ielts/%Y', verbose_name='IELTS sertifikati', null=True,
-                                         blank=True, validators=[validate_image], help_text='Rasm maks. 5MB')
+    harbiy_tavsiyanoma = models.FileField(upload_to='static/harbiy/', verbose_name='Harbiy tavsiyanoma', blank=True,
+                                          null=True, validators=[validate_file], help_text='PDF-Rasm file maks. 5MB')
+    ielts_sertifikat = models.ImageField(upload_to='static/ielts/', verbose_name='IELTS sertifikati', null=True,
+                                         blank=True, validators=[validate_file], help_text='Rasm maks. 5MB')
     davlat_mukofoti = models.ForeignKey('DavlatMukofoti', on_delete=models.PROTECT, null=True, blank=True,
                                         verbose_name='Davlat mukofoti')
-    davlat_mukofoti_pdf = models.FileField(upload_to='photos/d_mukofot/%Y', validators=[validate_file],
+    davlat_mukofoti_pdf = models.FileField(upload_to='static/d_mukofot/', validators=[validate_file],
                                            verbose_name='Davlat mukofoti pdf shakli', null=True, blank=True,
-                                           help_text='PDF file maks. 5 MB')
+                                           help_text='PDF-Rasm file maks. 5 MB')
+
+    random_son = models.BigIntegerField(default=random.randrange(1000000, 9999999))
 
     qushulgan_sana = models.DateTimeField(auto_now_add=True, verbose_name='Qo`shilgan sana')
     yangilangan_sana = models.DateTimeField(auto_now=True, verbose_name='Yangilangan sana')
