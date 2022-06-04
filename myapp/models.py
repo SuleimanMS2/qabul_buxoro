@@ -116,11 +116,9 @@ class Pasport(models.Model):
     telefon_raqam_2 = models.CharField(validators=[phone_regex], max_length=9, null=True, blank=True,
                                        verbose_name='Qo`shimcha raqam',
                                        help_text='Qoshimcha raqam, Majburiy emas', )
-
-    talim_shakli = models.ForeignKey('TalimShakli', on_delete=models.PROTECT, verbose_name='Ta`lim shakli', null=True,
-                                     blank=True)
+    talim_turi = models.ForeignKey('TalimTuri', on_delete=models.PROTECT, verbose_name='Ta`lim turi')
+    talim_shakli = models.ForeignKey('TalimShakli', on_delete=models.PROTECT, verbose_name='Ta`lim shakli')
     talim_yunalishi = ChainedForeignKey('YonalishOTM', on_delete=models.PROTECT, verbose_name='OTM Yo`nalishi',
-                                        null=True, blank=True,
                                         chained_field="talim_shakli",
                                         chained_model_field="talim_shakli",
                                         show_all=False,

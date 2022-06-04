@@ -22,6 +22,13 @@ class ViloyatList(APIView):
         return JsonResponse(data=tuman, safe=False)
 
 
+def photo_control(image):
+    if image == '':
+        return "Yo`q"
+    else:
+        return "Bor"
+
+
 class GeneratePdf(View):
     def get(self, request, pk, *args, **kwargs):
         talaba = Pasport.objects.filter(pk=pk)
@@ -31,14 +38,40 @@ class GeneratePdf(View):
         img = qrcode.make(ssilka)
         img.save(f'static/qrcode/QRCode{talaba.values()[0]["id"]}.png')
 
+        millat = Millat.objects.filter(pk=talaba.values()[0]["millat_id_id"]).values()[0]["name"]
+        jins = Jins.objects.filter(pk=talaba.values()[0]["jins_id"]).values()[0]["name"]
+        viloyat = Viloyat.objects.filter(pk=talaba.values()[0]["doimiy_viloyat_id"]).values()[0]["name"]
+        tuman = Tuman.objects.filter(pk=talaba.values()[0]["doimiy_tuman_id"]).values()[0]["name"]
+        talim_shakli = TalimShakli.objects.filter(pk=talaba.values()[0]["talim_shakli_id"]).values()[0]["name"]
+        talim_turi = TalimTuri.objects.filter(pk=talaba.values()[0]["talim_turi_id"]).values()[0]["name"]
+        talim_yunalishi = YonalishOTM.objects.filter(pk=talaba.values()[0]["talim_yunalishi_id"]).values()[0]["name"]
+
+
         data = {
-            'today': "talaba.values_list()[0]",
-            'amount': 39.99,
-            'customer_name': 'Cooper Mann',
-            'order_id': 1233434,
-            'rasm': talaba.values()[0]["photo"],
-            'qrcode': f'static/qrcode/MyQRCode{talaba.values()[0]["id"]}.png',
-            'tuman': Tuman.objects.filter(pk=talaba.values()[0]["doimiy_tuman_id"]).values()[0]["name"],
+            'id': talaba.values()[0]["id"],
+            'jshir': talaba.values()[0]["jshir"],
+            'familiya': talaba.values()[0]["familiya"],
+            'ism': talaba.values()[0]["ism"],
+            'sharif': talaba.values()[0]["sharif"],
+            'tug_sana': f'{talaba.values()[0]["tug_sana"]}',
+            'millat_id': millat,
+            'jins_id': jins,
+            'pass_seriya_raqam': f'{talaba.values()[0]["pass_seriya"]} {talaba.values()[0]["pass_raqam"]}',
+            'doimiy_manzil': f'{viloyat}, {tuman}, {talaba.values()[0]["doimiy_manzil"]}',
+            'telegram_raqam': f'+998 {talaba.values()[0]["telefon_raqam"]}',
+            'diplom_raqam': talaba.values()[0]["diplom_raqam"],
+            'ielts_sertifikat': photo_control(talaba.values()[0]["ielts_sertifikat"]),
+            'davlat_mukofoti': photo_control(talaba.values()[0]["davlat_mukofoti_id"]),
+            'talim_shakli_turi': f'{talim_shakli}, {talim_turi}',
+            'talim_yunalishi': talim_yunalishi,
+
+            'photo': talaba.values()[0]["photo"],
+            'qrcode': f'static/qrcode/QRCode{talaba.values()[0]["id"]}.png',
         }
         pdf = render_to_pdf('invoice.html', data)
         return HttpResponse(pdf, content_type='application/pdf')
+
+#  'photo': 'static/talaba/3x4.jpeg',
+
+#  'harbiy_tavsiyanoma': 'static/harbiy/Screenshot_from_2022-06-01_10-11-07.png',
+
