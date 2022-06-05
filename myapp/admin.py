@@ -18,15 +18,14 @@ class ResourceModel(resources.ModelResource):
 
 @admin.register(Pasport)
 class PassportAdmin(ImportExportModelAdmin):
-    list_display = ('id', 'ism', 'familiya', 'sharif', 'jshir',)
-    list_display_links = ('ism', 'familiya', 'sharif', 'jshir')
-    list_filter = ['qushulgan_sana', 'yangilangan_sana']
+    list_display = ('id', 'ism', 'familiya', 'sharif', 'jshir', 'talim_yunalishi', 'Chop_Etish',)
+    list_display_links = ('ism', 'familiya', 'sharif', 'jshir', 'talim_yunalishi',)
+    list_filter = ['qushulgan_sana', 'yangilangan_sana', 'talim_yunalishi', ]
     search_fields = ('ism', 'familiya', 'sharif', 'jshir', 'pass_seriya', 'pass_raqam',)
     ordering = ['-id']
     exclude = ('random_son',)
     resource_class = ResourceModel
-    # class Media:
-    #     js = ('js/dropdown.js',)
+
 
 
 class YonalishOTMAdmin(admin.ModelAdmin):

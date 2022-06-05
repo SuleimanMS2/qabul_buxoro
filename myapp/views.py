@@ -31,8 +31,11 @@ def photo_control(image):
 
 class GeneratePdf(View):
     def get(self, request, pk, *args, **kwargs):
-        talaba = Pasport.objects.filter(pk=pk)
-        print(talaba.values()[0])
+        uzb = str(pk)[:5]
+        talaba = Pasport.objects.filter(pk=uzb)
+
+        ballar = YonalishOTM.objects.filter(pk=talaba.values()[0]["talim_yunalishi_id"])
+        print(ballar.values()[0])
 
         ssilka = f'http://qabul.buxpxti.uz/pdf/{talaba.values()[0]["id"]}'
         img = qrcode.make(ssilka)
@@ -45,8 +48,20 @@ class GeneratePdf(View):
         talim_shakli = TalimShakli.objects.filter(pk=talaba.values()[0]["talim_shakli_id"]).values()[0]["name"]
         talim_turi = TalimTuri.objects.filter(pk=talaba.values()[0]["talim_turi_id"]).values()[0]["name"]
         talim_yunalishi = YonalishOTM.objects.filter(pk=talaba.values()[0]["talim_yunalishi_id"]).values()[0]["name"]
-        davlat_mukofoti = DavlatMukofoti.objects.filter(pk=talaba.values()[0]["davlat_mukofoti_id"]).values()[0]["name"]
+        davlat_mukofoti = DavlatMukofoti.objects.filter(pk=talaba.values()[0]["davlat_mukofoti_id"])
 
+        # print(davlat_mukofoti, 'ashdbjsadbjdbhdbjda')
+        def sonlar(son):
+            if son:
+                return son.values()[0]["name"]
+            else:
+                return "---"
+
+        def func_ball(bal):
+            if bal:
+                return bal
+            else:
+                return "---"
 
         data = {
             'id': talaba.values()[0]["id"],
@@ -62,17 +77,31 @@ class GeneratePdf(View):
             'telegram_raqam': f'+998 {talaba.values()[0]["telefon_raqam"]}',
             'diplom_raqam': talaba.values()[0]["diplom_raqam"],
             'ielts_sertifikat': photo_control(talaba.values()[0]["ielts_sertifikat"]),
-            'davlat_mukofoti': davlat_mukofoti,
+            'davlat_mukofoti': sonlar(davlat_mukofoti),
             'talim_shakli_turi': f'{talim_shakli}, {talim_turi}',
             'talim_yunalishi': talim_yunalishi,
+            'qushulgan_sana': f'{talaba.values()[0]["tug_sana"]}',
 
             'photo': talaba.values()[0]["photo"],
             'qrcode': f'static/qrcode/QRCode{talaba.values()[0]["id"]}.png',
+
+            'fan_1': sonlar(Fanlar.objects.filter(pk=ballar.values()[0]["fan_name_1_id"])),
+            'fan_2': sonlar(Fanlar.objects.filter(pk=ballar.values()[0]["fan_name_2_id"])),
+            'fan_3': sonlar(Fanlar.objects.filter(pk=ballar.values()[0]["fan_name_3_id"])),
+            'fan_4': sonlar(Fanlar.objects.filter(pk=ballar.values()[0]["fan_name_4_id"])),
+            'fan_5': sonlar(Fanlar.objects.filter(pk=ballar.values()[0]["fan_name_5_id"])),
+
+            'ball_1': sonlar(Ballar.objects.filter(pk=ballar.values()[0]["fan_ball_1_id"])),
+            'ball_2': sonlar(Ballar.objects.filter(pk=ballar.values()[0]["fan_ball_2_id"])),
+            'ball_3': sonlar(Ballar.objects.filter(pk=ballar.values()[0]["fan_ball_3_id"])),
+            'ball_4': sonlar(Ballar.objects.filter(pk=ballar.values()[0]["fan_ball_4_id"])),
+            'ball_5': sonlar(Ballar.objects.filter(pk=ballar.values()[0]["fan_ball_5_id"])),
+
+            'savol_son1': func_ball(ballar.values()[0]["savol_soni_1"]),
+            'savol_son2': func_ball(ballar.values()[0]["savol_soni_2"]),
+            'savol_son3': func_ball(ballar.values()[0]["savol_soni_3"]),
+            'savol_son4': func_ball(ballar.values()[0]["savol_soni_4"]),
+            'savol_son5': func_ball(ballar.values()[0]["savol_soni_5"]),
         }
         pdf = render_to_pdf('invoice.html', data)
         return HttpResponse(pdf, content_type='application/pdf')
-
-#  'photo': 'static/talaba/3x4.jpeg',
-
-#  'harbiy_tavsiyanoma': 'static/harbiy/Screenshot_from_2022-06-01_10-11-07.png',
-

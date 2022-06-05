@@ -9,6 +9,7 @@ from django.utils.safestring import mark_safe
 from smart_selects.db_fields import ChainedForeignKey
 import random
 
+
 def validate_image(image):
     filesize = image.file.size
     max_height = 480
@@ -110,7 +111,7 @@ class Pasport(models.Model):
                                      sort=True)
     doimiy_manzil = models.CharField(max_length=250, verbose_name="Doimiy yashash manzili", blank=True, null=True,
                                      help_text='Obod ko`cha 5-uy')
-    photo = models.ImageField(upload_to='static/talaba/', verbose_name="Rasm", validators=[validate_image],
+    photo = models.ImageField(upload_to='static/talaba/', verbose_name="Abituriyent rasmi", validators=[validate_image],
                               help_text='Maksimum fayl hajmi 2Mb')
     telefon_raqam = models.CharField(validators=[phone_regex], max_length=9, help_text='Telegram raqam (93)123-45-67')
     telefon_raqam_2 = models.CharField(validators=[phone_regex], max_length=9, null=True, blank=True,
@@ -134,22 +135,26 @@ class Pasport(models.Model):
     ielts_sertifikat = models.ImageField(upload_to='static/ielts/', verbose_name='IELTS sertifikati', null=True,
                                          blank=True, validators=[validate_file], help_text='Rasm maks. 5MB')
     davlat_mukofoti = models.ForeignKey('DavlatMukofoti', on_delete=models.PROTECT, null=True, blank=True,
-                                        verbose_name='Davlat mukofoti')
+                                        verbose_name='Davlat mukofoti', default='Null')
     davlat_mukofoti_pdf = models.FileField(upload_to='static/d_mukofot/', validators=[validate_file],
                                            verbose_name='Davlat mukofoti pdf shakli', null=True, blank=True,
                                            help_text='PDF-Rasm file maks. 5 MB')
 
     random_son = models.BigIntegerField(default=random.randrange(1000000, 9999999))
-
     qushulgan_sana = models.DateTimeField(auto_now_add=True, verbose_name='Qo`shilgan sana')
     yangilangan_sana = models.DateTimeField(auto_now=True, verbose_name='Yangilangan sana')
 
     def __str__(self):
         return self.familiya
 
+    def Chop_Etish(self):
+        a = str(self.id) + str(self.random_son)
+        return mark_safe(
+            f'<a href="http://127.0.0.1:8000/pdf/{a}" target="_blank">Chop Etish</a>')
+
     class Meta:
-        verbose_name = "Passport "
-        verbose_name_plural = "Passportlar"
+        verbose_name = "Hujjat qabul qilish "
+        verbose_name_plural = "Hujjat qabul qilish "
 
 
 class TalimTuri(models.Model):
@@ -194,32 +199,34 @@ class YonalishOTM(models.Model):
     talim_tili = models.ForeignKey(TalimTili, on_delete=models.PROTECT, verbose_name='Ta`lim tili')
     talim_shakli = models.ForeignKey(TalimShakli, on_delete=models.PROTECT, verbose_name='Ta`lim Shakli')
     talim_turi = models.ForeignKey(TalimTuri, on_delete=models.PROTECT, verbose_name='Ta`lim turi')
-    fan_name_1 = models.ForeignKey('Fanlar', on_delete=models.PROTECT, verbose_name='Fan-1', null=True, blank=True)
-    fan_ball_1 = models.ForeignKey('Ballar', on_delete=models.PROTECT, verbose_name='Ball-1', null=True, blank=True)
+    fan_name_1 = models.ForeignKey('Fanlar', on_delete=models.PROTECT, verbose_name='Fan-1', null=True, blank=True,
+                                   default='Null')
+    fan_ball_1 = models.ForeignKey('Ballar', on_delete=models.PROTECT, verbose_name='Ball-1', null=True, blank=True,
+                                   default='Null')
     savol_soni_1 = models.SmallIntegerField(verbose_name='Savol soni-1', null=True, blank=True)
     fan_name_2 = models.ForeignKey('Fanlar', on_delete=models.PROTECT, verbose_name='Fan-2', null=True, blank=True,
-                                   related_name='+')
+                                   related_name='+', default='Null')
     fan_ball_2 = models.ForeignKey('Ballar', on_delete=models.PROTECT, verbose_name='Ball-2', null=True, blank=True,
-                                   related_name='+')
-    savol_soni_2 = models.SmallIntegerField(verbose_name='Savol soni-2', null=True, blank=True)
+                                   related_name='+', default='Null')
+    savol_soni_2 = models.SmallIntegerField(verbose_name='Savol soni-2', null=True, blank=True, default='Null')
 
     fan_name_3 = models.ForeignKey('Fanlar', on_delete=models.PROTECT, verbose_name='Fan-3', null=True, blank=True,
-                                   related_name='+')
+                                   related_name='+', default='Null')
     fan_ball_3 = models.ForeignKey('Ballar', on_delete=models.PROTECT, verbose_name='Ball-3', null=True, blank=True,
-                                   related_name='+')
-    savol_soni_3 = models.SmallIntegerField(verbose_name='Savol soni-3', null=True, blank=True)
+                                   related_name='+', default='Null')
+    savol_soni_3 = models.SmallIntegerField(verbose_name='Savol soni-3', null=True, blank=True, default='Null')
 
     fan_name_4 = models.ForeignKey('Fanlar', on_delete=models.PROTECT, verbose_name='Fan-4', null=True, blank=True,
-                                   related_name='+')
+                                   related_name='+', default='Null')
     fan_ball_4 = models.ForeignKey('Ballar', on_delete=models.PROTECT, verbose_name='Ball-4', null=True, blank=True,
-                                   related_name='+')
-    savol_soni_4 = models.SmallIntegerField(verbose_name='Savol soni-4', null=True, blank=True)
+                                   related_name='+', default='Null')
+    savol_soni_4 = models.SmallIntegerField(verbose_name='Savol soni-4', null=True, blank=True, default='Null')
 
     fan_name_5 = models.ForeignKey('Fanlar', on_delete=models.PROTECT, verbose_name='Fan-5', null=True, blank=True,
-                                   related_name='+')
+                                   related_name='+', default='Null')
     fan_ball_5 = models.ForeignKey('Ballar', on_delete=models.PROTECT, verbose_name='Ball-5', null=True, blank=True,
-                                   related_name='+')
-    savol_soni_5 = models.SmallIntegerField(verbose_name='Savol soni-5', null=True, blank=True)
+                                   related_name='+', default='Null')
+    savol_soni_5 = models.SmallIntegerField(verbose_name='Savol soni-5', null=True, blank=True, default='Null')
 
     def __str__(self):
         return self.name
@@ -253,10 +260,10 @@ class Fanlar(models.Model):
 
 
 class Ballar(models.Model):
-    ballar = models.DecimalField(verbose_name='Ballar', max_digits=2, decimal_places=1)
+    name = models.DecimalField(verbose_name='Ballar', max_digits=2, decimal_places=1)
 
     def __str__(self):
-        return str(self.ballar)
+        return str(self.name)
 
     class Meta:
         verbose_name = 'Ball '
