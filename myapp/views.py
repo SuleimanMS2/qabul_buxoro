@@ -34,7 +34,7 @@ class GeneratePdf(View):
         talaba = Pasport.objects.filter(pk=pk)
         print(talaba.values()[0])
 
-        ssilka = f'http://127.0.0.1:8000/pdf/{talaba.values()[0]["id"]}'
+        ssilka = f'http://qabul.buxpxti.uz/pdf/{talaba.values()[0]["id"]}'
         img = qrcode.make(ssilka)
         img.save(f'static/qrcode/QRCode{talaba.values()[0]["id"]}.png')
 
@@ -45,6 +45,7 @@ class GeneratePdf(View):
         talim_shakli = TalimShakli.objects.filter(pk=talaba.values()[0]["talim_shakli_id"]).values()[0]["name"]
         talim_turi = TalimTuri.objects.filter(pk=talaba.values()[0]["talim_turi_id"]).values()[0]["name"]
         talim_yunalishi = YonalishOTM.objects.filter(pk=talaba.values()[0]["talim_yunalishi_id"]).values()[0]["name"]
+        davlat_mukofoti = DavlatMukofoti.objects.filter(pk=talaba.values()[0]["davlat_mukofoti_id"]).values()[0]["name"]
 
 
         data = {
@@ -61,7 +62,7 @@ class GeneratePdf(View):
             'telegram_raqam': f'+998 {talaba.values()[0]["telefon_raqam"]}',
             'diplom_raqam': talaba.values()[0]["diplom_raqam"],
             'ielts_sertifikat': photo_control(talaba.values()[0]["ielts_sertifikat"]),
-            'davlat_mukofoti': photo_control(talaba.values()[0]["davlat_mukofoti_id"]),
+            'davlat_mukofoti': davlat_mukofoti,
             'talim_shakli_turi': f'{talim_shakli}, {talim_turi}',
             'talim_yunalishi': talim_yunalishi,
 

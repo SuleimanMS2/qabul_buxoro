@@ -1,75 +1,614 @@
+{#<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">#}
+{#<html>#}
+{#<head>#}
+{#    <title>Title</title>#}
+{#    <style type="text/css">#}
+{#        body {#}
+{#            font-weight: 200;#}
+{#            font-size: 14px;#}
+{#        }#}
+{##}
+{#        .header {#}
+{#            font-size: 20px;#}
+{#            font-weight: 100;#}
+{#            text-align: center;#}
+{#            color: #007cae;#}
+{#        }#}
+{##}
+{#        .title {#}
+{#            font-size: 22px;#}
+{#            font-weight: 100;#}
+{#            /* text-align: right;*/#}
+{#            padding: 10px 20px 0px 20px;#}
+{#        }#}
+{##}
+{#        .title span {#}
+{#            color: #007cae;#}
+{#        }#}
+{##}
+{#        .details {#}
+{#            padding: 10px 20px 0px 20px;#}
+{#            text-align: left !important;#}
+{#            /*margin-left: 40%;*/#}
+{#        }#}
+{##}
+{#        .hrItem {#}
+{#            border: none;#}
+{#            height: 1px;#}
+{#            /* Set the hr color */#}
+{#            color: #333; /* old IE */#}
+{#            background-color: #fff; /* Modern Browsers */#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<div class='wrapper'>#}
+{#    <div class='header'>#}
+{#        <p class='title'>Invoice # </p>#}
+{#    </div>#}
+{#    <div>#}
+{##}
+{#        <div class='details'>#}
+{#            id: {{ id }} <br>#}
+{#            Jshir: {{ jshir }} <br>#}
+{#            Familiya: {{ familiya }} <br>#}
+{#            Ism: {{ ism }} <br>#}
+{#            Sharif: {{ sharif }} <br>#}
+{#            Tugilgan sanasi: {{ tug_sana }} <br>#}
+{#            Millati: {{ millat_id }}<br>#}
+{#            Jinsi: {{ jins_id }}<br>#}
+{#            Passport seriyasi va raqami: {{ pass_seriya_raqam }}<br>#}
+{#            Doimiy yashash manzili: {{ doimiy_manzil }}<br>#}
+{#            Telegram raqam: {{ telegram_raqam }}<br>#}
+{#            Diplom raqam: {{ diplom_raqam }}<br>#}
+{#            IELTS sertifikati: {{ ielts_sertifikat }}<br>#}
+{#            Davlat mukofoti: {{ davlat_mukofoti }}<br>#}
+{#            Ta`lim shakli va turi: {{ talim_shakli_turi }}<br>#}
+{#            Ta`lim yo`nalishi: {{ talim_yunalishi }}<br>#}
+{#            3x4 Rasm: <img src="{{ photo }}" width="113.38582677" height="151.18110236"><br>#}
+{#            QRCode: <img src="{{ qrcode }}" width="100" height="100"><br>#}
+{#            <hr class='hrItem'/>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{##}
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
-    <title>Title</title>
-    <style type="text/css">
-        body {
-            font-weight: 200;
-            font-size: 14px;
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="Generator" content="Microsoft Word 15 (filtered)">
+    <style>
+        <!--
+        /* Font Definitions */
+        @font-face {
+            font-family: "Cambria Math";
+            panose-1: 2 4 5 3 5 4 6 3 2 4;
         }
 
-        .header {
-            font-size: 20px;
-            font-weight: 100;
-            text-align: center;
-            color: #007cae;
+        @font-face {
+            font-family: Calibri;
+            panose-1: 2 15 5 2 2 2 4 3 2 4;
         }
 
-        .title {
-            font-size: 22px;
-            font-weight: 100;
-            /* text-align: right;*/
-            padding: 10px 20px 0px 20px;
+        /* Style Definitions */
+        p.MsoNormal,
+        li.MsoNormal,
+        div.MsoNormal {
+            margin-top: 0cm;
+            margin-right: 0cm;
+            margin-bottom: 8.0pt;
+            margin-left: 0cm;
+            line-height: 107%;
+            font-size: 11.0pt;
+            font-family: "Calibri", "sans-serif";
         }
 
-        .title span {
-            color: #007cae;
+        .MsoChpDefault {
+            font-family: "Calibri", "sans-serif";
         }
 
-        .details {
-            padding: 10px 20px 0px 20px;
-            text-align: left !important;
-            /*margin-left: 40%;*/
+        .MsoPapDefault {
+            margin-bottom: 8.0pt;
+            line-height: 107%;
         }
 
-        .hrItem {
-            border: none;
-            height: 1px;
-            /* Set the hr color */
-            color: #333; /* old IE */
-            background-color: #fff; /* Modern Browsers */
+        @page WordSection1 {
+            size: 595.3pt 841.9pt;
+            margin: 72.0pt 72.0pt 72.0pt 72.0pt;
         }
+
+        div.WordSection1 {
+            page: WordSection1;
+        }
+
+        -->
     </style>
 </head>
-<body>
-<div class='wrapper'>
-    <div class='header'>
-        <p class='title'>Invoice # </p>
-    </div>
-    <div>
 
-        <div class='details'>
-            id: {{ id }} <br>
-            Jshir: {{ jshir }} <br>
-            Familiya: {{ familiya }} <br>
-            Ism: {{ ism }} <br>
-            Sharif: {{ sharif }} <br>
-            Tugilgan sanasi: {{ tug_sana }} <br>
-            Millati: {{ millat_id }}<br>
-            Jinsi: {{ jins_id }}<br>
-            Passport seriyasi va raqami: {{ pass_seriya_raqam }}<br>
-            Doimiy yashash manzili: {{ doimiy_manzil }}<br>
-            Telegram raqam: {{ telegram_raqam }}<br>
-            Diplom raqam: {{ diplom_raqam }}<br>
-            IELTS sertifikati: {{ ielts_sertifikat }}<br>
-            Davlat mukofoti: {{ davlat_mukofoti }}<br>
-            Ta`lim shakli va turi: {{ talim_shakli_turi }}<br>
-            Ta`lim yo`nalishi: {{ talim_yunalishi }}<br>
-            3x4 Rasm: <img src="{{ photo }}" width="113.38582677" height="151.18110236"><br>
-            QRCode: <img src="{{ qrcode }}" width="100" height="100"><br>
-            <hr class='hrItem'/>
-        </div>
-    </div>
+<body lang="RU" style="width: 680px; margin: 0px auto;">
+{% load static %}
+<div class="WordSection1">
+    <p><br></p><br>
+    <p class="MsoNormal" style="margin-left:130.8pt;"><img width="82" height="88"
+                                                           src="{% static "img/image001.png" %}" align="left"
+                                                           style="float: right; display: inline-block; text-align:right;"><strong><span
+            lang="EN-US"
+            style="font-size:13.5pt;line-height:107%;color:#00AA00;">BUXORO PSIXOLOGIYA VA XORIJIY TILLAR<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INSTITUTI</span></strong><span
+            lang="EN-US" style='font-size:0pt;line-height:107%;font-family:"Times New Roman","serif";
+color:black;background:black;layout-grid-mode:line;'>&nbsp;</span></p>
+    <p align="center" class="MsoNormal" style="text-align:center;"><strong><span lang="EN-US"
+                                                                                 style="font-size:19.5pt;line-height:107%;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q A Y D&nbsp;&nbsp; V A R A Q A S I</span></strong>
+    </p>
+    <p align="center" class="MsoNormal" style="margin-left:247.8pt;text-align:center;"><span style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman","serif";
+color:black;'>202</span><span lang="EN-US" style='font-size:12.0pt;
+font-family:"Times New Roman","serif";color:black;'>2</span><span style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman","serif";
+color:black;'>-202</span><span lang="EN-US" style='font-size:12.0pt;
+font-family:"Times New Roman","serif";color:black;'>3</span><span style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman","serif";
+color:black;'>&nbsp;O'quv yili uchun qabul</span></p>
+    <table border="1" cellpadding="0" cellspacing="0" class="MsoTable15Grid1LightAccent3"
+           style="border-collapse:collapse;border:none;">
+        <tbody>
+        <tr>
+            <td rowspan="8" style="width:148.6pt;border:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="248">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span style='font-size:12.0pt;
+  font-family:"Times New Roman","serif";'><img width="113.38582677" height="151.18110236" id="Рисунок 2"
+                                               src="{{ photo }}"></span></strong></p>
+            </td>
+            <td style="width:76.8pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="128">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span
+                        style="font-size:12.0pt;font-weight:normal;">ID:</span></strong></p>
+            </td>
+            <td style="width:112.7pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="188">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ id }}</span></strong>
+                </p>
+            </td>
+            <td rowspan="8" style="width:112.7pt;border:solid #DBDBDB 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="188">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span style='font-size:12.0pt;
+  font-family:"Times New Roman","serif";'><img width="138" height="133" id="Рисунок 1"
+                                               src="{{ qrcode }}"></span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:76.8pt;border-top:none; border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="128">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>JSHIR:</span></strong>
+                </p>
+            </td>
+            <td style="width:112.7pt;border-top:none;
+ border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="188">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ jshir }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:76.8pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="128">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Familiya:</span></strong>
+                </p>
+            </td>
+            <td style="width:112.7pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="188">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ familiya }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:76.8pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="128">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Ism:</span></strong>
+                </p>
+            </td>
+            <td style="width:112.7pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="188">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ ism }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:76.8pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="128">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Sharif:</span></strong>
+                </p>
+            </td>
+            <td style="width:112.7pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="188">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ sharif }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:76.8pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="128">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Tug'ilgan sana:</span></strong>
+                </p>
+            </td>
+            <td style="width:112.7pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="188">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ tug_sana }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:76.8pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="128">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Millat:</span></strong>
+                </p>
+            </td>
+            <td style="width:112.7pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="188">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ millat_id }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:76.8pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="128">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Jinsi:</span></strong>
+                </p>
+            </td>
+            <td style="width:112.7pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="188">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ jins_id }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:148.6pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="248">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+            <td style="width:76.8pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="128">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>&nbsp;</span></strong>
+                </p>
+            </td>
+            <td style="width:112.7pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="188">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><span lang="EN-US" style='font-size:12.0pt;
+  font-family:"Times New Roman","serif";'>&nbsp;</span></p>
+            </td>
+            <td style="width:112.7pt;border-top:none;
+  border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="188">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><span lang="EN-US" style='font-size:12.0pt;
+  font-family:"Times New Roman","serif";'>&nbsp;</span></p>
+            </td>
+        </tr>
+        <tr style="height:14.65pt;">
+            <td style="width:148.6pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:14.65pt;" valign="top" width="248">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Passport seriya raqami:</span></strong>
+                </p>
+            </td>
+            <td colspan="3" style="width:302.2pt;border-top:none;
+  border-left:none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:14.65pt;" valign="top" width="504">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>&nbsp;{{ pass_seriya_raqam }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:148.6pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="248">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Doimiy manzili:</span></strong>
+                </p>
+            </td>
+            <td colspan="3" style="width:302.2pt;border-top:none;
+  border-left:none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="504">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ doimiy_manzil }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:148.6pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="248">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Telegram raqam:</span></strong>
+                </p>
+            </td>
+            <td colspan="3" style="width:302.2pt;border-top:none;
+  border-left:none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="504">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ telegram_raqam }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:148.6pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="248">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Diplom raqami:</span></strong>
+                </p>
+            </td>
+            <td colspan="3" style="width:302.2pt;border-top:none;
+  border-left:none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="504">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ diplom_raqam }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:148.6pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="248">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>IELTS sertifikati:</span></strong>
+                </p>
+            </td>
+            <td colspan="3" style="width:302.2pt;border-top:none;
+  border-left:none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="504">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ ielts_sertifikat }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:148.6pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="248">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Davlat mukofoti:</span></strong>
+                </p>
+            </td>
+            <td colspan="3" style="width:302.2pt;border-top:none;
+  border-left:none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="504">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ davlat_mukofoti }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:148.6pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="248">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>Ta`lim shakli va turi:</span></strong>
+                </p>
+            </td>
+            <td colspan="3" style="width:302.2pt;border-top:none;
+  border-left:none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="504">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ talim_shakli_turi }}</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:148.6pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="248">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><strong><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>OTM yo&rsquo;nalishi:</span></strong>
+                </p>
+            </td>
+            <td colspan="3" style="width:302.2pt;border-top:none;
+  border-left:none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="504">
+                <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;"><span lang="EN-US" style='font-size:12.0pt;font-family:"Times New Roman","serif";'>{{ talim_yunalishi }}</span>
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p align="center" class="MsoNormal" style="text-align:center;"><span lang="EN-US"
+                                                                         style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman","serif";'>&nbsp;</span>
+    </p>
+    <p align="center" class="MsoNormal" style="text-align:center;"><strong><span lang="EN-US"
+                                                                                 style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman","serif";'>Imtihon topshiriladigan fanlar</span></strong>
+    </p>
+    <table border="1" cellpadding="0" cellspacing="0" class="MsoTableGrid"
+           style="width:665px;border-collapse:collapse;border:none;" width="756">
+        <tbody>
+        <tr>
+            <td style="width:21.3pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="36">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="UZ-CYR" style='
+  font-family:"Times New Roman","serif";'>№</span></strong></p>
+            </td>
+            <td style="width:247.8pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="413">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>Fan nomi</span></strong></p>
+            </td>
+            <td style="width:92.15pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>bali</span></strong></p>
+            </td>
+            <td style="width:92.1pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>savol soni</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="36">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="UZ-CYR" style='
+  font-family:"Times New Roman","serif";'>1</span></strong></p>
+            </td>
+            <td style="width:247.8pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="413">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+            <td style="width:92.15pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+            <td style="width:92.1pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="36">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="UZ-CYR" style='
+  font-family:"Times New Roman","serif";'>2</span></strong></p>
+            </td>
+            <td style="width:247.8pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="413">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+            <td style="width:92.15pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+            <td style="width:92.1pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="36">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="UZ-CYR" style='
+  font-family:"Times New Roman","serif";'>3</span></strong></p>
+            </td>
+            <td style="width:247.8pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="413">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+            <td style="width:92.15pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+            <td style="width:92.1pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='font-family:"Times New Roman","serif";'>&nbsp;</span></strong>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="36">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="UZ-CYR" style='
+  font-family:"Times New Roman","serif";'>4</span></strong></p>
+            </td>
+            <td style="width:247.8pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="413">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+            <td style="width:92.15pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+            <td style="width:92.1pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:21.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="36">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="UZ-CYR" style='
+  font-family:"Times New Roman","serif";'>5</span></strong></p>
+            </td>
+            <td style="width:247.8pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="413">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+            <td style="width:92.15pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+            <td style="width:92.1pt;border-top:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;" valign="top" width="154">
+                <p align="center" class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;"><strong><span lang="EN-US" style='
+  font-family:"Times New Roman","serif";'>&nbsp;</span></strong></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p align="center" class="MsoNormal" style="text-align:center;"><span lang="EN-US"
+                                                                         style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman","serif";'>&nbsp;</span>
+    </p>
+    <p align="center" class="MsoNormal" style="text-align:center;"><span lang="EN-US" style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
+color:#C45911;'>Abituriyentga eslatma:</span></p>
+    <p class="MsoNormal" style="text-indent:35.4pt;"><span lang="EN-US"
+                                                           style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman","serif";'>******* eslatma eslatma eslatma eslatma eslatma eslatma eslatma ******* eslatma eslatma eslatma eslatma eslatma ******* eslatma eslatma eslatma eslatma eslatma eslatma eslatma eslatma eslatma eslatma eslatma ******* eslatma eslatma eslatma ******* eslatma eslatma eslatma ******* eslatma eslatma eslatma eslatma ******* eslatma eslatma eslatma eslatma eslatma eslatma eslatma eslatma eslatma eslatma</span>
+    </p>
+    <p class="MsoNormal"><span lang="EN-US" style='font-size:12.0pt;line-height:107%;
+font-family:"Times New Roman","serif";'>&nbsp;</span></p>
+    <p class="MsoNormal"><strong><span lang="EN-US" style='font-size:12.0pt;
+font-family:"Times New Roman","serif";'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hujjat to'g'riligini tasdiqlayman:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ____________&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;U.I. Komilov</span></strong>
+    </p>
 </div>
+
 </body>
+
 </html>
