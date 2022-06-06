@@ -150,7 +150,7 @@ class Pasport(models.Model):
     def Chop_Etish(self):
         a = str(self.id) + str(self.random_son)
         return mark_safe(
-            f'<a href="http://52.73.249.232/pdf/{a}" target="_blank">Chop Etish</a>')
+            f'<a href="http://127.0.0.1:8000/pdf/{a}" target="_blank">Chop Etish</a>')
 
     class Meta:
         verbose_name = "Hujjat qabul qilish "

@@ -9,6 +9,29 @@ from django.views.generic import View
 from qabul_buxoro.utils import render_to_pdf
 import qrcode
 
+import json
+from django.http import HttpResponse
+from django.utils.decorators import method_decorator
+from django.views import View
+from telegram import Update
+from django.views.decorators.csrf import csrf_exempt
+from .qabul_bot.bot import bot, dispatcher
+
+
+@method_decorator(csrf_exempt, 'dispatch')
+class Master(View):
+    http_method_names = ['post']
+
+    def post(self, request, *args, **kwargs):
+        try:
+            body = request.body
+            data = json.loads(body)
+            update: Update = Update.de_json(data, bot)
+            dispatcher.process_update(update)
+        except Exception as e:
+            pass
+        return HttpResponse('ok', status=200)
+
 
 class ViloyatList(APIView):
     permission_classes = [IsAuthenticated, ]
@@ -37,7 +60,7 @@ class GeneratePdf(View):
         ballar = YonalishOTM.objects.filter(pk=talaba.values()[0]["talim_yunalishi_id"])
         print(ballar.values()[0])
 
-        ssilka = f'http://qabul.buxpxti.uz/pdf/{talaba.values()[0]["id"]}'
+        ssilka = f'http://127.0.0.1:8000/pdf/{talaba.values()[0]["id"]}'
         img = qrcode.make(ssilka)
         img.save(f'static/qrcode/QRCode{talaba.values()[0]["id"]}.png')
 

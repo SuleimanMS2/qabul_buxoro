@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from myapp.views import GeneratePdf
 
 urlpatterns = [
+    path('bot/', include('myapp.urls')),
     path('', admin.site.urls),
     path('chaining/', include('smart_selects.urls')),
     path('pdf/<int:pk>', GeneratePdf.as_view()),
